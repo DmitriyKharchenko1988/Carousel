@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: aqua;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.carusel {
+  position: relative;
+  display: flex;
+  background-color: rgb(216, 216, 216);
+  height: 100px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.carusel::before,
+.carusel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 200px;
+  z-index: 1;
+  background: linear-gradient(to right, rgb(216, 216, 216) 0%, transparent 100%);
+}
+
+.carusel::before {
+  left: 0;
+}
+
+.carusel::after {
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.carusel:hover .slide {
+  animation-play-state: paused;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  height: inherit;
+  animation: slidshow 10s linear infinite;
+}
+
+.slide__image {
+  height: calc(100% - 40px);
+  margin: 0 40px;
+}
+
+@keyframes slidshow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
